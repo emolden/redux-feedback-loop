@@ -1,5 +1,5 @@
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-
+import axios from "axios";
 import { useSelector } from "react-redux";
 
 function Review () {
@@ -12,7 +12,24 @@ function Review () {
     const comment = useSelector (store => store.comment)
 
     const handleReviewSubmit = () => {
-        history.push('/submission_page')
+        let reviewToAdd = {
+            feeling: feeling,
+            understanding: understanding,
+            support: support,
+            comments: comment
+        }
+
+        axios({
+            method: 'POST',
+            url:'/api/feedback',
+            data: reviewToAdd
+        })
+        .then ((response) => {
+            history.push('/submission_page')
+        })
+        .catch ((error) => {
+            console.log('Error in POST route: ', error)
+        }) 
     }
 
     return (
