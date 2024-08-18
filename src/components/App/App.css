@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  font-family: Arial, Helvetica, sans-serif
 }
 
 .App-header {
@@ -20,4 +21,30 @@
 
 h4 {
   font-style: italic;
+}
+
+.nextButton {
+  font-size: 20px;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.nextButton:hover {
+  background-color: rgb(100, 95, 100);
+}
+
+.labelInput {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.inputButton {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+}
+
+.input {
+  font-size: 20px;
 }

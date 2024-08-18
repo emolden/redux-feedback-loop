@@ -24,14 +24,17 @@ function Comments () {
     return (
         <div>
             <h1>Any comments you want to leave?</h1>
-            <input 
-                data-testid="input"
-                value={comment}
-                type= 'text'
-                placeholder= 'Comments'
-                onChange={(e) => setComment(e.target.value)}
-            />
-            <button data-testid="next" onClick={handleCommentNext}>Next</button>
+            <div className="inputButton">
+                <input 
+                    className="input"
+                    data-testid="input"
+                    value={comment}
+                    type= 'text'
+                    placeholder= 'Comments'
+                    onChange={(e) => setComment(e.target.value)}
+                />
+                <button className = "nextButton" data-testid="next" onClick={handleCommentNext}>Next</button>
+            </div>
         </div>
     )
 }

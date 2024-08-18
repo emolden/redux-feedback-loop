@@ -13,9 +13,9 @@ function SubmissionPage () {
 
     return (
         <div>
-            <h2>Thank You!</h2>
+            <h2>Thank You for your feedback!</h2>
             
-            <button data-testid="next" onClick={goToFeeling}>Leave New Feedback</button>
+            <button className = "nextButton" data-testid="next" onClick={goToFeeling}>Leave New Feedback</button>
         </div>
     )
 }
