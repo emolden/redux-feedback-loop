@@ -26,6 +26,21 @@ function Admin () {
         })
     }
 
+    const handleDeleteButton = (itemId) => {
+        console.log('Delete button was pushed! item id is: ', itemId)
+
+        axios({
+            method: 'DELETE',
+            url: `/api/feedback/${itemId}`
+        })
+        .then((response) => {
+            renderAllFeedback();
+        })
+        .catch((error) => {
+            console.log('Error occured when receiving a response fromt he server DELETE route: ', error);
+        })
+    }
+
     return (
         <div>
             <h1>Feedback Results:</h1>
@@ -47,7 +62,7 @@ function Admin () {
                                 <td>{userFeedback.understanding}</td>
                                 <td>{userFeedback.support}</td>
                                 <td>{userFeedback.comments}</td>
-                                <td>🗑️</td>
+                                <td onClick={function(){handleDeleteButton(userFeedback.id)}}>🗑️</td>
                             </tr>
                         )
                     })}
