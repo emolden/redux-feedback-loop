@@ -25,6 +25,45 @@ router.post('/', (req, res) => {
         })
 })
 
+router.get('/', (req, res) => {
+    console.log('GET /api/feedback received a request!');
+
+    const sqlText = `
+        SELECT * FROM "feedback"
+            ORDER BY "id";
+    `;
+
+    pool.query(sqlText)
+        .then((dbRes) => {
+            res.send(dbRes.rows);
+        })
+        .catch((dbErr) => {
+            console.log('Database error in GET /api/feedback: ', dbErr);
+            res.sendStatus(500);
+        })
+})
+
+router.delete('/:itemId', (req, res) => {
+
+    const itemToDelete = req.params.itemId;
+
+    const sqlText = `
+        DELETE FROM "feedback"
+            WHERE "id" = $1;
+    `;
+
+    const sqlValues = [itemToDelete];
+
+    pool.query (sqlText, sqlValues)
+        .then((dbResult) => {
+            res.sendStatus(200);
+        })
+        .catch((dbErr) => {
+            console.log('SQL query in DELETE /feedback/:itemId error: ', dbErr);
+            res.sendStatus(500);
+        })
+})
+
 
 // DO NOT EDIT THIS ROUTE
 // This route must return all feedback.

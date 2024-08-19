@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import './App.css';
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
+import { useState } from 'react';
 
 import Feeling from "../Feeling/Feeling"
 import Understanding from "../Understanding/Understanding"
@@ -9,8 +10,11 @@ import Support from "../Support/Support"
 import Comments from "../Comments/Comments"
 import Review from '../Review/Review';
 import SubmissionPage from '../SubmissionPage/SubmissionPage';
+import Admin from '../Admin/Admin';
 
 function App() {
+
+ 
 
   return (
     <div className='App'>
@@ -36,6 +40,9 @@ function App() {
         </Route>
         <Route exact path='/submission_page'>
           <SubmissionPage />
+        </Route>
+        <Route exact path='/admin'>
+          <Admin />
         </Route>
       </Router>
     </div>
