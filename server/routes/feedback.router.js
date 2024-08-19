@@ -25,6 +25,24 @@ router.post('/', (req, res) => {
         })
 })
 
+router.get('/', (req, res) => {
+    console.log('GET /api/feedback received a request!');
+
+    const sqlText = `
+        SELECT * FROM "feedback"
+            ORDER BY "id";
+    `;
+
+    pool.query(sqlText)
+        .then((dbRes) => {
+            res.send(dbRes.rows);
+        })
+        .catch((dbErr) => {
+            console.log('Database error in GET /api/feedback: ', dbErr);
+            res.sendStatus(500);
+        })
+})
+
 
 // DO NOT EDIT THIS ROUTE
 // This route must return all feedback.

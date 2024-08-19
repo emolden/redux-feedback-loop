@@ -40,7 +40,7 @@ const store = createStore(
         feeling,
         understanding,
         support,
-        comment
+        comment,
         
     }),
     applyMiddleware(logger),
